@@ -1,6 +1,6 @@
 # 🔥 Melted - Text Editor with Compare
 
-**A sleek, minimalist text editor with powerful diff comparison built by Melty!**
+**A sleek, minimalist text editor with powerful diff comparison!**
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![React](https://img.shields.io/badge/React-19-61DAFB)
@@ -24,7 +24,7 @@
 ## 🚀 Get Started
 
 ### 🌐 Web Version
-**[Launch Melted in your browser →](https://melty1000.github.io/-Melty-Melted-Text-Editor/)**
+**[Launch Melted in your browser →](https://melty1000.github.io/Melted-Text-Editor/)**
 
 No installation required - just click and start editing!
 

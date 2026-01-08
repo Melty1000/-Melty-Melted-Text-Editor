@@ -8,4 +8,7 @@ export default defineConfig({
         tailwindcss(),
     ],
     base: './', // Required for Electron - uses relative paths
+    build: {
+        outDir: 'docs', // GitHub Pages only supports root or /docs
+    },
 });
