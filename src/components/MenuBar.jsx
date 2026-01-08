@@ -127,6 +127,26 @@ export function MenuBar({
                     </button>
                     {activeMenu === 'help' && (
                         <div className="menu-bar__dropdown">
+                            <div className="menu-bar__submenu-label">Shortcuts</div>
+                            <div className="menu-bar__dropdown-item menu-bar__dropdown-item--small menu-bar__dropdown-item--muted">
+                                <span>Find</span><span className="menu-bar__shortcut-key">Ctrl+F</span>
+                            </div>
+                            <div className="menu-bar__dropdown-item menu-bar__dropdown-item--small menu-bar__dropdown-item--muted">
+                                <span>Replace</span><span className="menu-bar__shortcut-key">Ctrl+H</span>
+                            </div>
+                            <div className="menu-bar__dropdown-item menu-bar__dropdown-item--small menu-bar__dropdown-item--muted">
+                                <span>Go to Line</span><span className="menu-bar__shortcut-key">Ctrl+G</span>
+                            </div>
+                            <div className="menu-bar__dropdown-item menu-bar__dropdown-item--small menu-bar__dropdown-item--muted">
+                                <span>Command Palette</span><span className="menu-bar__shortcut-key">Ctrl+Shift+P</span>
+                            </div>
+                            <div className="menu-bar__dropdown-item menu-bar__dropdown-item--small menu-bar__dropdown-item--muted">
+                                <span>Distraction-Free</span><span className="menu-bar__shortcut-key">F11</span>
+                            </div>
+                            <div className="menu-bar__dropdown-item menu-bar__dropdown-item--small menu-bar__dropdown-item--muted">
+                                <span>Multi-Cursor</span><span className="menu-bar__shortcut-key">Alt+Click</span>
+                            </div>
+                            <div className="menu-bar__divider" />
                             <button className="menu-bar__dropdown-item" onClick={() => window.open('https://github.com/Melty1000/-Melty-Melted-Text-Editor', '_blank')}>
                                 <span>GitHub</span>
                             </button>
@@ -194,7 +214,7 @@ export function MenuBar({
         }
         
         .menu-bar__logo-img { width: 24px; height: 24px; }
-        .menu-bar__logo-text { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+        .menu-bar__logo-text { font-size: 14px; font-weight: 600; color: var(--accent); }
         .menu-bar__item { position: relative; }
         
         .menu-bar__btn {

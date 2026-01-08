@@ -1,4 +1,4 @@
-import { lazy, Suspense, useRef, useCallback, useEffect, useState } from 'react';
+import { lazy, Suspense, useRef, useCallback, useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import { MONACO_THEMES, detectLanguage } from '../utils/monacoConfig';
 
 // Lazy load Monaco - this is the biggest bundle (~2MB)
@@ -46,11 +46,31 @@ function EditorLoading() {
     );
 }
 
-export function Editor({ content, onChange, theme = 'melty', font, fontSize, tabName = '', minimap = false, wordWrap = true, onLanguageChange }) {
+export const Editor = forwardRef(function Editor({ content, onChange, theme = 'melty', font, fontSize, tabName = '', minimap = false, wordWrap = true, onLanguageChange }, ref) {
     const editorRef = useRef(null);
     const monacoRef = useRef(null);
     const [language, setLanguage] = useState('plaintext');
     const detectTimeoutRef = useRef(null);
+
+    // Expose methods to parent via ref
+    useImperativeHandle(ref, () => ({
+        openFind: () => {
+            editorRef.current?.getAction('actions.find')?.run();
+        },
+        openReplace: () => {
+            editorRef.current?.getAction('editor.action.startFindReplaceAction')?.run();
+        },
+        goToLine: (line) => {
+            if (editorRef.current) {
+                editorRef.current.revealLineInCenter(line);
+                editorRef.current.setPosition({ lineNumber: line, column: 1 });
+                editorRef.current.focus();
+            }
+        },
+        focus: () => {
+            editorRef.current?.focus();
+        },
+    }), []);
 
     // Detect language - prefer extension, fallback to debounced content detection
     useEffect(() => {
@@ -152,4 +172,4 @@ export function Editor({ content, onChange, theme = 'melty', font, fontSize, tab
       `}</style>
         </div>
     );
-}
+});
